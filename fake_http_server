@@ -1,0 +1,17 @@
+import http.server
+import socketserver
+import os
+
+# Define the port you want to serve on
+PORT = 8080
+
+# Change the working directory to the 'public' folder
+# os.chdir('.')
+
+# Create the handler
+Handler = http.server.SimpleHTTPRequestHandler
+
+# Set up the server
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    print(f"Serving on port {PORT}")
+    httpd.serve_forever()
